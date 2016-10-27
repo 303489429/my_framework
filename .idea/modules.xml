@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/amqp/amqp.iml" filepath="$PROJECT_DIR$/amqp/amqp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic/basic.iml" filepath="$PROJECT_DIR$/basic/basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework.iml" filepath="$PROJECT_DIR$/framework/framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/junit/junit.iml" filepath="$PROJECT_DIR$/junit/junit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/leader-us/leader-us.iml" filepath="$PROJECT_DIR$/leader-us/leader-us.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my_framework.iml" filepath="$PROJECT_DIR$/my_framework.iml" />
+    </modules>
+  </component>
+</project>

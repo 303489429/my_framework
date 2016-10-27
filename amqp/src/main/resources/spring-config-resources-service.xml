@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.chinawayltd">
+        <context:include-filter type="custom" expression="com.chinawayltd.tender.event.SubscriberTypeFilter"/>
+    </context:component-scan>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <!--应用配置-->
+                <value>classpath:config/app.properties</value>
+                <!--jdbc配置-->
+                <value>classpath:config/jdbc.properties</value>
+                <!--redis配置-->
+                <value>classpath:config/redis.properties</value>
+                <!--zk配置-->
+                <value>classpath:config/zk.properties</value>
+                <!--MQ配置-->
+                <value>classpath:config/rabbit.properties</value>
+                <!--邮件发送-->
+                <value>classpath:config/mail.properties</value>
+                <!--短信发送-->
+                <value>classpath:config/sms.properties</value>
+                <!--定时任务-->
+                <value>classpath:config/quartz.properties</value>
+                <!-- 属性配置文件 -->
+                <value>classpath:config/url.properties</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
