@@ -1,5 +1,9 @@
 package com.concurrent;
 
+import org.apache.commons.lang.StringUtils;
+
+import java.lang.reflect.Field;
+
 /**
  * Created by wangzhilong on 2016/10/14.
  */
@@ -14,7 +18,7 @@ public class TestThreadLocal {
         System.out.println("输出………………");
         for (int i = 0; i < 100; i++) {
             if(i < 98)
-                Thread.sleep(10);
+                Thread.sleep(1);
             else
                 System.out.println("i="+i+",thread"+Thread.currentThread().getName());
         }
@@ -27,7 +31,7 @@ public class TestThreadLocal {
 
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         TestThreadLocal local = new TestThreadLocal();
         local.initThread();
         local.print();
@@ -36,15 +40,18 @@ public class TestThreadLocal {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                LocalContext.get().set("李四",12);
+
+                //LocalContext.get().set("李四",12);
                 System.out.println("姓名2："+LocalContext.get().getName());
                 System.out.println("年龄2："+LocalContext.get().getSex());
             }
         });
         thread.start();
         thread.join();
-        LocalContext.get().set("王五",8);
+        //LocalContext.get().set("王五",8);
         local.useThreadLocalContext();
+
+       ThreadLocalUtil.dumphreadLocals();
     }
 
 }

@@ -23,5 +23,7 @@ public class ArraysToList {
         System.out.println(Arrays.asList(ArrayUtils.toObject(new int[] {1,6})));
 
         System.out.println(Arrays.asList(new Object[]{new int[]{2,6}}));
+
+        new MyList(1,2);
     }
 }

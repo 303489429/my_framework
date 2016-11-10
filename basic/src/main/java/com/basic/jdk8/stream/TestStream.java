@@ -120,7 +120,13 @@ public class TestStream {
         //basic();
         //maxEndTime();
         //calc();
-        generate();
+        //generate();
+        for (int i = 0; i < 100; i++) {
+            if(i > 10 && i < 90){
+                continue;
+            }
+            System.out.println("--------------i="+i);
+        }
     }
 
     public static void generate(){
