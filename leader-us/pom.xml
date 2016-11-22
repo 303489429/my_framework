@@ -11,6 +11,10 @@
 
     <artifactId>leader-us</artifactId>
 
+    <properties>
+        <sizeof.version>0.1</sizeof.version>
+
+    </properties>
     <dependencies>
         <!--CacheSize是一个谷歌的小项目 java语言通过它可以进行访问本机Cache的信息 -->
         <dependency>
@@ -18,7 +22,51 @@
             <groupId>fr.ujm.tse.lt2c.satin</groupId>
             <version>0.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>cn.loveshisong.sizeof</groupId>
+            <artifactId>sizeof</artifactId>
+            <version>${sizeof.version}</version>
+        </dependency>
+        <!-- https://github.com/AdoptOpenJDK/jitwatch/wiki -->
+        <dependency>
+            <groupId>com.chrisnewland</groupId>
+            <artifactId>jitwatch</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
 
     </dependencies>
+    <build>
+        <plugins>
+            <!-- 打源码配置 -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-source-plugin</artifactId>-->
+                <!--<version>2.4</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>attach-sources</id>-->
+                        <!--<phase>verify</phase> &lt;!&ndash; 要绑定到的生命周期的阶段 在verify之后，install之前执行下面指定的goal &ndash;&gt;-->
+                        <!--<goals>-->
+                            <!--<goal>jar-no-fork</goal> &lt;!&ndash; 类似执行mvn source:jar &ndash;&gt;-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
+            <!-- 测试运行器(Test Runner), 执行到特定生命周期阶段的时候，通过该插件来执行JUnit或者TestNG的测试用例 -->
+            <!-- maven-surefire-plugin 在test时默认执行 src/test/java/ 下所有名为*Test.java和*TestCase.java的测试类 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkMode>pertest</forkMode>
+                    <!-- argLine指定了VM运行参数 -->
+                    <argLine>-javaagent:D:/JavaTools/repository/cn/loveshisong/sizeof/sizeof/0.1/sizeof-${sizeof.version}.jar</argLine>
+                    <workingDirectory>${basedir}/target</workingDirectory>
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

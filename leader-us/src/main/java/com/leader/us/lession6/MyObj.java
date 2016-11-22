@@ -51,6 +51,9 @@ public class MyObj {
     }
 
 }
+
+//指针压缩命令  -XX:+UseCompressedOops 开启
+//指针压缩命令  -XX:-UseCompressedOops 关闭
 //32位JVM下
 // [HEAD:8bytes] 8
 // [a: 4bytes] 12
@@ -59,3 +62,16 @@ public class MyObj {
 // [padding: 3bytes] 20
 // [padding: 4bytes] 24
 
+//64位JVM下 压缩指针  -XX:+UseCompressedOops 开启
+// [HEAD:8bytes] 12
+// [a: 4bytes] 16
+// [c: 4bytes] 20
+// [b: 1bytes] 21
+// [padding: 3bytes] 24
+
+//64位JVM下 不压缩指针  -XX:-UseCompressedOops 关闭
+// [HEAD:8bytes] 16
+// [a: 4bytes] 20
+// [c: 4bytes] 24
+// [b: 1bytes] 25
+// [padding: 7bytes] 32
