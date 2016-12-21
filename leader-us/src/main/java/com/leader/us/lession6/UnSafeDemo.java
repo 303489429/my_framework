@@ -20,6 +20,7 @@ public class UnSafeDemo {
         System.out.println("array int scale:"+ unsafe.arrayIndexScale(int[].class)); //4
         System.out.println("array Integer scale:"+ unsafe.arrayIndexScale(Integer[].class)); //4
         System.out.println("array byte scale:"+ unsafe.arrayIndexScale(byte[].class)); //1
+        System.out.println("array short scale:"+ unsafe.arrayIndexScale(short[].class)); //2
 
         Integer[] longArr = {1,4,6,7,8,9};
         long baseOffset = unsafe.arrayBaseOffset(longArr.getClass()) ; //数组第一个元素的偏移地址

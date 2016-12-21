@@ -11,6 +11,7 @@ public class ArrayTest {
     private static Unsafe unsafe = UnsafeUtil.getUnsafe();
 
     public static void main(String[] args) {
+        System.out.println("addressSize="+unsafe.addressSize());
         System.out.println("int 1 base offset:" + unsafe.arrayBaseOffset(int[].class));
         System.out.println("Integer 1 base offset:" + unsafe.arrayBaseOffset(Integer[].class));
         System.out.println("long 1 base offset:" + unsafe.arrayBaseOffset(long[].class));
